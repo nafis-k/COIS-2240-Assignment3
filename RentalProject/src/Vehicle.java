@@ -7,32 +7,43 @@ public abstract class Vehicle {
 
     public enum VehicleStatus { Available, Held, Rented, UnderMaintenance, OutOfService }
 
-    public Vehicle(String make, String model, int year) {
-    	if (make == null || make.isEmpty())
-    		this.make = null;
-    	else
-    		this.make = make.substring(0, 1).toUpperCase() + make.substring(1).toLowerCase();
-    	
-    	if (model == null || model.isEmpty())
-    		this.model = null;
-    	else
-    		this.model = model.substring(0, 1).toUpperCase() + model.substring(1).toLowerCase();
-    	
+    public static String capitalize(String s) {
+        if (s == null || s.isEmpty()) return s;
+        return s.substring(0,1).toUpperCase() + s.substring(1).toLowerCase();
+    }
+
+    public Vehicle(String licensePlate, String make, String model, int year) {
+
+        this.make = capitalize(make);
+        this.model = capitalize(model);
+
         this.year = year;
         this.status = VehicleStatus.Available;
-        this.licensePlate = null;
+
+        setLicensePlate(licensePlate);
     }
 
     public Vehicle() {
-        this(null, null, 0);
+        this(null, null, null, 0);
     }
 
     public void setLicensePlate(String plate) {
-        this.licensePlate = plate == null ? null : plate.toUpperCase();
+        if (plate == null) {
+            this.licensePlate = null;
+            return;
+        }
+
+        String upper = plate.toUpperCase();
+
+        if (!upper.matches("^[A-Z]{3}[0-9]{3}$")) {
+            throw new IllegalArgumentException("Invalid license plate format (must be AAA111)");
+        }
+
+        this.licensePlate = upper;
     }
 
     public void setStatus(VehicleStatus status) {
-    	this.status = status;
+        this.status = status;
     }
 
     public String getLicensePlate() { return licensePlate; }
