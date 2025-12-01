@@ -1,8 +1,8 @@
 public class Minibus extends Vehicle implements Rentable {
     private boolean isAccessible;
 
-    public Minibus(String make, String model, int year, boolean isAccessible) {
-        super(make, model, year);
+    public Minibus(String licensePlate, String make, String model, int year, boolean isAccessible) {
+        super(licensePlate, make, model, year);
         this.isAccessible = isAccessible;
     }
 
