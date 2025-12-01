@@ -2,12 +2,13 @@ public class PickupTruck extends Vehicle implements Rentable {
     private double cargoSize;
     private boolean hasTrailer;
 
-    public PickupTruck(String make, String model, int year, double cargoSize, boolean hasTrailer) {
-        super(make, model, year);
+    public PickupTruck(String licensePlate, String make, String model, int year, double cargoSize, boolean hasTrailer) {
+        super(licensePlate, make, model, year);
         if (cargoSize <= 0) throw new IllegalArgumentException("Cargo size must be > 0");
         this.cargoSize = cargoSize;
         this.hasTrailer = hasTrailer;
     }
+
 
     public double getCargoSize() {
         return cargoSize;
