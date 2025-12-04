@@ -31,4 +31,10 @@ public class RentalHistory {
         }
         return result;
     }
+    //testing
+    public List<RentalRecord> getRecords() 
+    {
+        return rentalRecords;
+    }
+
 }

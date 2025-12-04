@@ -121,4 +121,12 @@ public class RentalSystem {
                 return c;
         return null;
     }
+    
+ // testing
+    public void resetForTesting() {
+        vehicles.clear();
+        customers.clear();
+        rentalHistory.getRentalHistory().clear();
+    }
+
 }

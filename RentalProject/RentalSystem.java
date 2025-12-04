@@ -114,14 +114,18 @@ public class RentalSystem {
                 String status = p[5];
 
                 Vehicle v = null;
-                if (type.equalsIgnoreCase("Car"))
-                    v = new Car(plate, make, model, year);
-                else if (type.equalsIgnoreCase("Minibus"))
-                    v = new Minibus(plate, make, model, year);
-                else if (type.equalsIgnoreCase("PickupTruck"))
-                    v = new PickupTruck(plate, make, model, year);
-                else if (type.equalsIgnoreCase("SportCar"))
-                    v = new SportCar(plate, make, model, year);
+                if (type.equalsIgnoreCase("Car")) {
+                    v = new Car(plate, make, model, year, 5);
+                }
+                else if (type.equalsIgnoreCase("Minibus")) {
+                    v = new Minibus(plate, make, model, year, false);
+                }
+                else if (type.equalsIgnoreCase("PickupTruck")) {
+                    v = new PickupTruck(plate, make, model, year, 1.0, false);
+                }
+                else if (type.equalsIgnoreCase("SportCar")) {
+                    v = new SportCar(plate, make, model, year, 2, 300, false);
+                }
 
                 if (v != null) {
                     v.setStatus(Vehicle.VehicleStatus.valueOf(status));
